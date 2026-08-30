@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://evoluteur.github.io/npm-pulse/sitemap.xml

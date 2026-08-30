@@ -1,0 +1,76 @@
+/*
+  https://evoluteur.github.io/
+  (c) 2026 Olivier Giulieri
+ */
+
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  background: #0288d1 url("spirals.png");
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Marcellus", serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.4em;
+  color: white;
+  overflow-x: hidden;
+}
+h1,
+h2 {
+  color: #ffcc80;
+}
+h1 {
+  font-size: 2.5rem;
+}
+a,
+a:visited {
+  color: #ffb74d;
+  text-decoration: none;
+  font-weight: 400;
+  /* background-color: #2b88d2; */
+}
+a:active,
+a:hover {
+  color: #ffcc80;
+  text-decoration: underline;
+  font-weight: 400;
+}
+footer {
+  color: #bdcff1;
+  margin: 50px 20px 10px 20px;
+  > a {
+    white-space: nowrap;
+  }
+  &:hover {
+    color: white;
+  }
+}
+
+.nav {
+  color: white;
+  background-color: #1a1a1a;
+  padding: 8px 10px;
+  > a {
+    color: #92cddc;
+    background-color: #1a1a1a !important;
+    text-decoration: none;
+    &:hover {
+      color: #ff9900;
+    }
+  }
+}
+.gpc {
+  padding: 0 20px;
+}
+@media print {
+  body {
+    color: #1a1a1a !important;
+  }
+  @page {
+    margin: 1cm 1cm;
+  }
+}

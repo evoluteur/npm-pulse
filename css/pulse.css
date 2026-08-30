@@ -1,0 +1,207 @@
+/*
+  npm-pulse
+  https://evoluteur.github.io/npm-pulse/
+  (c) 2026 Olivier Giulieri
+*/
+
+#title > a {
+  text-transform: none;
+}
+.totals {
+  font-size: 1.2rem;
+  white-space: nowrap;
+  margin-left: 20px;
+  > span {
+    margin-right: 20px;
+  }
+}
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: baseline;
+  margin-bottom: 20px;
+  label::after {
+    content: ":";
+  }
+  input,
+  select {
+    font-size: 16px;
+    padding: 5px 10px;
+    margin-left: 5px;
+  }
+  .tools {
+    white-space: nowrap;
+  }
+}
+#summary {
+  font-size: 0.9em;
+  color: #bbdefb;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.9em;
+  > .project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    background-color: #5594f4;
+    width: 300px;
+    max-width: 100%;
+    border: 3px solid #0288d1;
+    border-radius: 10px;
+    padding: 5px 20px 15px;
+    .desc {
+      padding: 10px 0;
+    }
+    .p-links > a {
+      display: inline-block;
+      margin-top: 5px;
+    }
+  }
+}
+.pcard-title {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  min-height: 56px;
+  margin-bottom: 5px;
+  > span:nth-child(1) {
+    flex-grow: 1;
+    overflow-wrap: anywhere;
+  }
+  > .dls {
+    font-size: 1.1rem;
+    color: white;
+    white-space: nowrap;
+  }
+}
+.pcard-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 12px;
+  font-size: 0.85em;
+  color: #dbe9ff;
+}
+.lang {
+  margin-right: 10px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  border: solid 1px white;
+  white-space: nowrap;
+}
+.trend {
+  white-space: nowrap;
+  &.up {
+    color: #b9f6ca;
+  }
+  &.down {
+    color: #ffcdd2;
+  }
+}
+.crud-icon {
+  position: relative;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  top: 2px;
+  svg {
+    fill: currentColor;
+    height: 16px;
+    width: 16px;
+  }
+}
+
+/* sparklines: 52 weekly buckets, no axis, no library */
+.spark {
+  display: block;
+  width: 100%;
+  height: 46px;
+  overflow: visible;
+  > polygon {
+    fill: rgba(255, 255, 255, 0.22);
+  }
+  > polyline {
+    fill: none;
+    stroke: #ffcc80;
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+  > circle {
+    fill: #ffcc80;
+    vector-effect: non-scaling-stroke;
+  }
+}
+.spark-empty {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  font-size: 0.85em;
+  color: #dbe9ff;
+}
+
+.noresults {
+  margin: 20px 0;
+  padding: 30px;
+}
+
+/* charts page */
+.chart-block {
+  margin: 0 0 50px 0;
+  > h2 {
+    margin-bottom: 5px;
+  }
+  > .chart-note {
+    font-size: 0.85em;
+    color: #bbdefb;
+    margin: 0 0 15px 0;
+  }
+}
+.chart {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  .grid {
+    stroke: rgba(255, 255, 255, 0.25);
+    stroke-width: 1;
+  }
+  .bar {
+    fill: #ffcc80;
+  }
+  .bar.partial {
+    fill: rgba(255, 204, 128, 0.6);
+    stroke: #ffcc80;
+    stroke-dasharray: 3 3;
+  }
+  .axis {
+    fill: white;
+    font-size: 12px;
+    font-family: "Marcellus", serif;
+  }
+  .axis.value {
+    fill: #dbe9ff;
+  }
+  .bar-label {
+    fill: white;
+    font-size: 13px;
+    font-family: "Marcellus", serif;
+  }
+}
+
+@media print {
+  .filters,
+  .nav {
+    display: none;
+  }
+  .projects > .project-card {
+    break-inside: avoid;
+  }
+}

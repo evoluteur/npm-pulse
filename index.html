@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-063933E3C2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-063933E3C2");
+    </script>
+    <title>npm Pulse - Downloads and trends for your npm packages</title>
+    <link rel="canonical" href="https://evoluteur.github.io/npm-pulse/" />
+    <meta charset="utf-8" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0288d1" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Marcellus"
+    />
+    <link href="css/me.css" rel="stylesheet" />
+    <link href="css/pulse.css" rel="stylesheet" />
+    <script src="js/npm-data.js"></script>
+    <script src="js/pulse.js"></script>
+    <meta
+      name="keywords"
+      content="npm, downloads, packages, statistics, stats, dashboard, sparkline, trends, registry, open source, portfolio, github, stars"
+    />
+    <meta
+      name="description"
+      content="One page dashboard for all the npm packages of a maintainer: downloads over the last week, month, and year, weekly sparklines, trends, and GitHub stars."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Olivier Giulieri" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Evoluteur" />
+    <meta property="og:title" content="npm Pulse" />
+    <meta
+      property="og:description"
+      content="One page dashboard for all the npm packages of a maintainer: downloads over the last week, month, and year, weekly sparklines, trends, and GitHub stars."
+    />
+    <meta property="og:url" content="https://evoluteur.github.io/npm-pulse/" />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/evoluteur/npm-pulse/main/npm-pulse.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="npm Pulse" />
+    <meta
+      name="twitter:description"
+      content="Downloads, sparklines, and trends for all your npm packages on a single page."
+    />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/evoluteur/npm-pulse/main/npm-pulse.png"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "npm-pulse",
+        "description": "One page dashboard for all the npm packages of a maintainer: downloads, weekly sparklines, trends, and GitHub stars.",
+        "url": "https://evoluteur.github.io/npm-pulse/",
+        "codeRepository": "https://github.com/evoluteur/npm-pulse",
+        "license": "https://github.com/evoluteur/npm-pulse/blob/main/LICENSE",
+        "programmingLanguage": "JavaScript",
+        "author": {
+          "@type": "Person",
+          "name": "Olivier Giulieri",
+          "url": "https://evoluteur.github.io/"
+        }
+      }
+    </script>
+  </head>
+
+  <body onload="setupPulsePage()">
+    <div class="nav">
+      <a href="https://evoluteur.github.io/">Evoluteur</a> &gt; npm Pulse
+    </div>
+
+    <section class="gpc">
+      <h1 id="title">Loading...</h1>
+
+      <div class="filters">
+        <div>
+          <label for="filter">Find</label>
+          <input type="text" onkeyup="filter(this.value)" id="filter" />
+        </div>
+        <div>
+          <label for="periodPicker">Period</label>
+          <select onchange="setPeriod(this.value)" id="periodPicker">
+            <option value="last7">Last 7 days</option>
+            <option value="last30" selected>Last 30 days</option>
+            <option value="last365">Last 12 months</option>
+          </select>
+        </div>
+        <div>
+          <label for="sortPicker">Sort by</label>
+          <select onchange="sort(this.value)" id="sortPicker">
+            <option value="downloads" selected>Downloads</option>
+            <option value="name">Name</option>
+            <option value="stars">Stars</option>
+            <option value="date">Published</option>
+            <option value="trend">Trend</option>
+          </select>
+        </div>
+        <span id="summary"></span>
+        <span class="tools">
+          <a href="chart.html">Charts</a> -
+          <a href="#" onclick="clearCache(); return false;">Refresh</a>
+        </span>
+      </div>
+
+      <div id="packages" class="projects"></div>
+    </section>
+
+    <footer>
+      <p>
+        <a href="https://github.com/evoluteur/npm-pulse">npm-Pulse</a> is open
+        source at GitHub with MIT license. Downloads come from the
+        <a href="https://github.com/npm/registry/blob/main/docs/download-counts.md"
+          >npm registry API</a
+        >, stars from the
+        <a href="https://docs.github.com/en/rest">GitHub API</a>.
+      </p>
+
+      <p>
+        For more ways to look at your projects check out
+        <a href="https://evoluteur.github.io/github-projects-cards/"
+          >GitHub-Projects-Cards</a
+        >
+        and
+        <a href="https://evoluteur.github.io/meet-the-fans/">Meet-the-Fans</a>.
+      </p>
+
+      &#169; 2026
+      <a href="https://evoluteur.github.io/" target="_blank">Olivier Giulieri</a>
+    </footer>
+  </body>
+</html>

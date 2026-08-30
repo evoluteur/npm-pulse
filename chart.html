@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-063933E3C2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-063933E3C2");
+    </script>
+    <title>npm Pulse Charts - Downloads month by month</title>
+    <link rel="canonical" href="https://evoluteur.github.io/npm-pulse/chart.html" />
+    <meta charset="utf-8" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0288d1" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Marcellus"
+    />
+    <link href="css/me.css" rel="stylesheet" />
+    <link href="css/pulse.css" rel="stylesheet" />
+    <script src="js/npm-data.js"></script>
+    <script src="js/chart.js"></script>
+    <meta
+      name="keywords"
+      content="npm, downloads, chart, monthly, statistics, packages, ranking, trends, svg"
+    />
+    <meta
+      name="description"
+      content="Total npm downloads month by month across all the packages of a maintainer, and the ranking of the most downloaded ones."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Olivier Giulieri" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Evoluteur" />
+    <meta property="og:title" content="npm Pulse Charts" />
+    <meta
+      property="og:description"
+      content="Total npm downloads month by month across all the packages of a maintainer, and the ranking of the most downloaded ones."
+    />
+    <meta
+      property="og:url"
+      content="https://evoluteur.github.io/npm-pulse/chart.html"
+    />
+  </head>
+
+  <body onload="setupChartPage()">
+    <div class="nav">
+      <a href="https://evoluteur.github.io/">Evoluteur</a> &gt;
+      <a href="index.html">npm Pulse</a> &gt; Charts
+    </div>
+
+    <section class="gpc">
+      <h1 id="title">Loading...</h1>
+      <div id="charts"></div>
+    </section>
+
+    <footer>
+      <p>
+        Charts are drawn in plain SVG from the
+        <a href="https://github.com/npm/registry/blob/main/docs/download-counts.md"
+          >npm registry API</a
+        >, no charting library.
+        <a href="index.html">Back to the packages</a>.
+      </p>
+      &#169; 2026
+      <a href="https://evoluteur.github.io/" target="_blank">Olivier Giulieri</a>
+    </footer>
+  </body>
+</html>
