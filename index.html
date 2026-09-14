@@ -22,10 +22,16 @@
     <link rel="icon" type="image/png" href="favicon.png" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Marcellus"
+      href="https://fonts.googleapis.com/css?family=Overpass"
+    />
+    <link
+      id="omg-theme-css"
+      rel="stylesheet"
+      href="css/themes/evol-blue/evol-blue.css"
     />
     <link href="css/me.css" rel="stylesheet" />
     <link href="css/pulse.css" rel="stylesheet" />
+    <script src="js/theme.js"></script>
     <script src="js/npm-data.js"></script>
     <script src="js/pulse.js"></script>
     <meta
@@ -83,7 +89,13 @@
 
   <body onload="setupPulsePage()">
     <div class="nav">
-      <a href="https://evoluteur.github.io/">Evoluteur</a> &gt; npm Pulse
+      <span class="crumbs">
+        <a href="https://evoluteur.github.io/">Evoluteur</a>
+        Code Projects : <a href="index.html">GitHub</a> -
+      npm
+      </span>
+      </span>
+      <div id="omg-theme-picker"></div>
     </div>
 
     <section class="gpc">
@@ -96,11 +108,7 @@
         </div>
         <div>
           <label for="periodPicker">Period</label>
-          <select onchange="setPeriod(this.value)" id="periodPicker">
-            <option value="last7">Last 7 days</option>
-            <option value="last30" selected>Last 30 days</option>
-            <option value="last365">Last 12 months</option>
-          </select>
+          <select onchange="setPeriod(this.value)" id="periodPicker"></select>
         </div>
         <div>
           <label for="sortPicker">Sort by</label>
@@ -113,10 +121,7 @@
           </select>
         </div>
         <span id="summary"></span>
-        <span class="tools">
-          <a href="chart.html">Charts</a>
-          <!-- <a href="#" onclick="clearCache(); return false;">Refresh</a> -->
-        </span>
+        <!-- <a href="#" onclick="clearCache(); return false;">Refresh</a> -->
       </div>
 
       <div id="packages" class="projects"></div>

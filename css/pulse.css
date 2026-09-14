@@ -2,10 +2,132 @@
   npm-pulse
   https://evoluteur.github.io/npm-pulse/
   (c) 2026 Olivier Giulieri
+
+  Colors come from the theme loaded in css/themes (see js/theme.js).
 */
 
-#title > a {
+#title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+#title-main > a {
   text-transform: none;
+}
+.header-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+/* Meet-the-Fans, in the title next to the site picker */
+.fans-link {
+  margin-left: 6px;
+  vertical-align: -3px;
+}
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  svg {
+    height: 24px;
+    width: 24px;
+  }
+  svg {
+    fill: var(--link);
+  }
+  &:hover svg {
+    fill: var(--link-hover);
+  }
+  &.current svg {
+    fill: var(--icon-current);
+  }
+}
+.user-input {
+  font-family: inherit;
+  font-size: 2.5rem;
+  font-weight: inherit;
+  line-height: inherit;
+  color: var(--heading);
+  background: transparent;
+  border: none;
+  border-bottom: 2px dashed transparent;
+  padding: 0;
+}
+.user-input:hover,
+.user-input:focus {
+  border-bottom-color: var(--heading);
+  outline: none;
+}
+.site-picker {
+  /* sized to the selected option where the browser supports it */
+  field-sizing: content;
+  font-family: inherit;
+  font-size: 2.5rem;
+  font-weight: inherit;
+  line-height: inherit;
+  color: var(--heading);
+  background: transparent;
+  border: none;
+  border-bottom: 2px dashed transparent;
+  padding: 0;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    border-bottom-color: var(--heading);
+    outline: none;
+  }
+  > option {
+    font-size: 1rem;
+    color: var(--input-text);
+    background-color: var(--input-bg);
+  }
+}
+.user-edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.edit-icon {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--heading);
+}
+.edit-icon:hover {
+  color: var(--text);
+}
+.edit-icon svg {
+  fill: currentColor;
+  width: 18px;
+  height: 18px;
+}
+.duration-picker {
+  /* sized to the selected option where the browser supports it */
+  field-sizing: content;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: var(--heading);
+  background: transparent;
+  border: none;
+  border-bottom: 2px dashed transparent;
+  padding: 0;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    border-bottom-color: var(--heading);
+    outline: none;
+  }
+  > option {
+    font-size: 1rem;
+    color: var(--input-text);
+    background-color: var(--input-bg);
+  }
 }
 .totals {
   font-size: 1.2rem;
@@ -26,17 +148,19 @@
   }
   input,
   select {
+    font-family: inherit;
     font-size: 16px;
     padding: 5px 10px;
     margin-left: 5px;
-  }
-  .tools {
-    white-space: nowrap;
+    color: var(--input-text);
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
   }
 }
 #summary {
   font-size: 0.9em;
-  color: #bbdefb;
+  color: var(--muted);
 }
 
 .projects {
@@ -49,10 +173,10 @@
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
-    background-color: #5594f4;
+    background-color: var(--card-bg);
     width: 300px;
     max-width: 100%;
-    border: 3px solid #0288d1;
+    border: 3px solid var(--card-border);
     border-radius: 10px;
     padding: 5px 20px 15px;
     .desc {
@@ -76,7 +200,7 @@
   }
   > .dls {
     font-size: 1.1rem;
-    color: white;
+    color: var(--card-strong);
     white-space: nowrap;
   }
 }
@@ -88,22 +212,28 @@
   align-items: baseline;
   margin-top: 12px;
   font-size: 0.85em;
-  color: #dbe9ff;
+  color: var(--card-foot);
 }
 .lang {
+  display: inline-flex;
+  align-items: center;
   margin-right: 10px;
-  padding: 3px 10px;
-  border-radius: 10px;
-  border: solid 1px white;
   white-space: nowrap;
+}
+.lang-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  border-radius: 50%;
 }
 .trend {
   white-space: nowrap;
   &.up {
-    color: #b9f6ca;
+    color: var(--up);
   }
   &.down {
-    color: #ffcdd2;
+    color: var(--down);
   }
 }
 .crud-icon {
@@ -126,17 +256,17 @@
   height: 46px;
   overflow: visible;
   > polygon {
-    fill: rgba(255, 255, 255, 0.22);
+    fill: var(--accent-soft);
   }
   > polyline {
     fill: none;
-    stroke: #ffcc80;
+    stroke: var(--accent);
     stroke-width: 1.5;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
   }
   > circle {
-    fill: #ffcc80;
+    fill: var(--accent);
     vector-effect: non-scaling-stroke;
   }
 }
@@ -145,7 +275,7 @@
   display: flex;
   align-items: center;
   font-size: 0.85em;
-  color: #dbe9ff;
+  color: var(--card-foot);
 }
 
 .noresults {
@@ -153,16 +283,182 @@
   padding: 30px;
 }
 
-/* charts page */
+/* charts page - the charts sit on a panel, like github-projects-cards */
+.chart-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  > .series-panel {
+    flex: 1 1 300px;
+    min-width: 0;
+    margin: 0;
+  }
+}
+.panels-note {
+  font-size: 0.85em;
+  color: var(--muted);
+  margin: 0 0 12px 0;
+}
+.chart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.chart-toggle {
+  display: inline-flex;
+  gap: 4px;
+  > button {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: none;
+    color: var(--panel-muted);
+    svg {
+      height: 18px;
+      width: 18px;
+      fill: currentColor;
+    }
+    &:hover {
+      color: var(--panel-text);
+    }
+    &.selected {
+      color: var(--panel-text);
+      border-color: var(--panel-grid);
+    }
+  }
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85em;
+  color: var(--panel-text);
+  th,
+  td {
+    text-align: left;
+    padding: 5px 10px;
+    border-bottom: 1px solid var(--panel-grid);
+  }
+  td + td,
+  th + th {
+    text-align: right;
+    width: 22%;
+  }
+}
 .chart-block {
-  margin: 0 0 50px 0;
+  margin: 0 0 24px 0;
+  padding: 16px 20px 20px;
+  border: 3px solid var(--panel-border);
+  border-radius: 10px;
+  background: var(--panel-bg);
+  color: var(--panel-text);
   > h2 {
+    color: var(--heading);
     margin-bottom: 5px;
   }
   > .chart-note {
     font-size: 0.85em;
-    color: #bbdefb;
+    color: var(--panel-muted);
     margin: 0 0 15px 0;
+  }
+}
+
+/* pies and their legend, also used outside a panel (the shared legend of
+   the Stars / Forks / Downloads row) */
+.legend {
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+/* bars and pie are the same boxes, morphed with CSS transitions
+   (ported from react-morph-charts) */
+.morph {
+  position: relative;
+  width: 100%;
+  height: 230px;
+}
+.morph-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 6px;
+  text-align: center;
+  contain: layout style paint;
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    clip-path 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.morph.no-transition .morph-item,
+.morph.no-transition .morph-label {
+  transition: none;
+}
+.morph-label {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 2px;
+  font-size: 0.7rem;
+  line-height: 1.15;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.morph-name {
+  overflow-wrap: anywhere;
+}
+.morph-value {
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+.morph-item.narrow .morph-name {
+  display: none;
+}
+.morph-item.tiny .morph-label {
+  display: none;
+}
+.morph-item.pie .morph-label {
+  /* names/values already shown in the legend below the pie */
+  display: none;
+}
+.pie-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 14px;
+  font-size: 0.8em;
+  color: var(--muted);
+  margin: 4px 0 24px;
+  .swatch {
+    margin: 0 4px 0 0;
+  }
+}
+.pie-key {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.swatch {
+  display: inline-block;
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin: 0 2px 0 12px;
+  &.stars {
+    background-color: var(--accent);
+  }
+  &.forks {
+    background-color: var(--fork);
+  }
+  &.downloads {
+    background-color: var(--card-foot);
   }
 }
 .chart {
@@ -170,29 +466,60 @@
   height: auto;
   overflow: visible;
   .grid {
-    stroke: rgba(255, 255, 255, 0.25);
+    stroke: var(--panel-grid);
     stroke-width: 1;
   }
   .bar {
-    fill: #ffcc80;
+    fill: var(--accent);
   }
   .bar.partial {
-    fill: rgba(255, 204, 128, 0.6);
-    stroke: #ffcc80;
+    fill: var(--accent);
+    fill-opacity: 0.45;
+    stroke: var(--accent);
     stroke-dasharray: 3 3;
   }
+  .bar.stars {
+    fill: var(--accent);
+  }
+  .bar.forks {
+    fill: var(--fork);
+  }
+  .bar.downloads {
+    fill: var(--card-foot);
+  }
+  .bar.up {
+    fill: var(--up);
+  }
+  .bar.down {
+    fill: var(--down);
+  }
+  .zero {
+    stroke: var(--panel-grid);
+    stroke-width: 1;
+  }
   .axis {
-    fill: white;
+    fill: var(--panel-text);
     font-size: 12px;
-    font-family: "Marcellus", serif;
+    font-family: inherit;
   }
   .axis.value {
-    fill: #dbe9ff;
+    fill: var(--panel-muted);
   }
   .bar-label {
-    fill: white;
+    fill: var(--panel-text);
     font-size: 13px;
-    font-family: "Marcellus", serif;
+    font-family: inherit;
+  }
+}
+
+/* downloads over the picked period, in its own color */
+.period-chart {
+  .bar {
+    fill: var(--period-bar);
+  }
+  .bar.partial {
+    fill: var(--period-bar);
+    stroke: var(--period-bar);
   }
 }
 
@@ -203,5 +530,25 @@
   }
   .projects > .project-card {
     break-inside: avoid;
+  }
+}
+
+/* tooltip of the pie slices, following the pointer */
+.chart-tooltip {
+  position: fixed;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  color: var(--nav-text);
+  background-color: var(--nav-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  &[hidden] {
+    display: none;
   }
 }

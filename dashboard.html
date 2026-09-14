@@ -16,7 +16,7 @@
     <title>npm Pulse Charts - Downloads month by month</title>
     <link
       rel="canonical"
-      href="https://evoluteur.github.io/npm-pulse/chart.html"
+      href="https://evoluteur.github.io/npm-pulse/dashboard.html"
     />
     <meta charset="utf-8" />
     <meta http-equiv="content-language" content="en" />
@@ -25,12 +25,18 @@
     <link rel="icon" type="image/png" href="favicon.png" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Marcellus"
+      href="https://fonts.googleapis.com/css?family=Overpass"
+    />
+    <link
+      id="omg-theme-css"
+      rel="stylesheet"
+      href="css/themes/evol-blue/evol-blue.css"
     />
     <link href="css/me.css" rel="stylesheet" />
     <link href="css/pulse.css" rel="stylesheet" />
+    <script src="js/theme.js"></script>
     <script src="js/npm-data.js"></script>
-    <script src="js/chart.js"></script>
+    <script src="js/dashboard.js"></script>
     <meta
       name="keywords"
       content="npm, downloads, chart, monthly, statistics, packages, ranking, trends, svg"
@@ -50,14 +56,17 @@
     />
     <meta
       property="og:url"
-      content="https://evoluteur.github.io/npm-pulse/chart.html"
+      content="https://evoluteur.github.io/npm-pulse/dashboard.html"
     />
   </head>
 
   <body onload="setupChartPage()">
     <div class="nav">
-      <a href="https://evoluteur.github.io/">Evoluteur</a> &gt;
-      <a href="index.html">npm Pulse</a> &gt; Charts
+      <span class="crumbs">
+        <a href="https://evoluteur.github.io/">Evoluteur</a> &gt; Code Projects
+        : <a href="index.html">GitHub</a> - npm
+      </span>
+      <div id="omg-theme-picker"></div>
     </div>
 
     <section class="gpc">
