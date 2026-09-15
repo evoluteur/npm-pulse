@@ -96,8 +96,25 @@ footer {
   padding: 0 20px;
   padding-left: calc(20px + var(--content-left, 0px));
 }
+
+/* wraps the theme picker and the GitHub link on the right of the nav bar */
+.nav-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--nav-link);
+  &:hover {
+    color: var(--nav-link-hover);
+  }
+}
+
 @media print {
-  #omg-theme-picker {
+  .nav-right {
     display: none;
   }
   @page {
