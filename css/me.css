@@ -73,19 +73,21 @@ footer {
 #omg-theme-picker {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 2px;
   > a {
-    display: inline-block;
-    height: 18px;
-    width: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    width: 28px;
     border-radius: 50%;
-    border: 1px solid silver;
+    border: 1px solid transparent;
+    color: var(--nav-link);
     &:hover {
-      border-color: var(--nav-link-hover);
+      color: var(--nav-link-hover);
     }
     &.selected {
-      border-color: var(--nav-link-hover);
-      box-shadow: 0 0 0 2px var(--nav-link-hover);
+      color: var(--nav-link-hover);
     }
   }
 }
@@ -107,9 +109,16 @@ footer {
 .github-link {
   display: inline-flex;
   align-items: center;
-  color: var(--nav-link);
-  &:hover {
-    color: var(--nav-link-hover);
+  /* the octicon markup hardcodes fill="currentColor" on the <path>, so
+     set fill on the path itself rather than relying on the SVG's fill
+     to be inherited or on currentColor -- the currentColor + inherited
+     color approach was painting the wrong color (nearly invisible in
+     the light theme) until :hover forced a repaint */
+  svg path {
+    fill: var(--nav-link);
+  }
+  &:hover svg path {
+    fill: var(--nav-link-hover);
   }
 }
 
