@@ -24,6 +24,10 @@
 
   --accent: #e08a00;
   --accent-soft: rgba(224, 138, 0, 0.18);
+  /* area chart uses evol-blue's blue instead of the light theme's
+     own orange accent */
+  --spark-line: #0288d1;
+  --spark-fill: rgba(2, 136, 209, 0.18);
   --period-bar: #4e79a7; /* downloads over the picked period */
   --grid: rgba(0, 0, 0, 0.12);
   --up: #1a7f37;

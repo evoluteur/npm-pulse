@@ -256,17 +256,17 @@
   height: 46px;
   overflow: visible;
   > polygon {
-    fill: var(--accent-soft);
+    fill: var(--spark-fill);
   }
   > polyline {
     fill: none;
-    stroke: var(--accent);
+    stroke: var(--spark-line);
     stroke-width: 1.5;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
   }
   > circle {
-    fill: var(--accent);
+    fill: var(--spark-line);
     vector-effect: non-scaling-stroke;
   }
 }

@@ -24,6 +24,10 @@
 
   --accent: #ffcc80;
   --accent-soft: rgba(255, 204, 128, 0.18);
+  /* the sparkline (area chart) tracks --accent here, but light
+     overrides it to use evol-blue's blue instead */
+  --spark-line: var(--accent);
+  --spark-fill: var(--accent-soft);
   /* downloads over the picked period */
   --period-bar: #90caf9;
   --grid: rgba(255, 255, 255, 0.18);
