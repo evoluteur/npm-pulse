@@ -1,6 +1,6 @@
 {
   "name": "evol-npm-pulse",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "One page dashboard for all your npm packages: downloads over the last week, month, and year, weekly sparklines, trends, and GitHub stars.",
   "repository": "github:evoluteur/npm-pulse",
   "homepage": "https://evoluteur.github.io/npm-pulse/",
