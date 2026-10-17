@@ -6,8 +6,25 @@
 
 // --- config options ---------------------------------------------------
 const DEFAULT_USER = "evoluteur"; // npm maintainer whose packages are shown
-let user = DEFAULT_USER;
-let ghUser = DEFAULT_USER; // GitHub user (for stars and forks), edited together with user
+// the GitHub user last looked at, shared with Repo-Atlas and GitHub-Projects-Cards
+// (same site, same localStorage)
+const SHARED_USER_KEY = "evoluteur-github-user";
+const storedUser = () => {
+  try {
+    return localStorage.getItem(SHARED_USER_KEY) || "";
+  } catch (e) {
+    return "";
+  }
+};
+const rememberUser = (login) => {
+  try {
+    localStorage.setItem(SHARED_USER_KEY, login);
+  } catch (e) {
+    // private browsing, the user just does not carry over
+  }
+};
+let user = storedUser() || DEFAULT_USER;
+let ghUser = user; // GitHub user (for stars and forks), edited together with user
 const cacheMinutes = 360; // npm recomputes its stats once a day, no need to refetch often
 // ----------------------------------------------------------------------
 
@@ -334,30 +351,53 @@ const monthlyTotals = () => {
 
 // --- page helpers shared by the packages page and the charts page ------
 
-const focusUserInput = () => {
-  const input = document.getElementById("userInput");
-  input.focus();
-  input.select();
-};
+// the box to look at another user, like on Repo-Atlas
+const userFormHTML = () => `<form
+    class="user-form"
+    autocomplete="off"
+    onsubmit="event.preventDefault(); changeUser(this.elements.login.value)"
+  >
+    <label class="field">
+      <span>npmjs.com/~</span>
+      <input
+        id="userInput"
+        name="login"
+        value="${escapeHtml(user)}"
+        placeholder="username"
+        spellcheck="false"
+        autocapitalize="off"
+        aria-label="npm username"
+        required
+      />
+    </label>
+    <button class="btn" type="submit">Show</button>
+  </form>`;
 
-// the username, editable in place with a pencil, on every page
-const userEditHTML = () => `<span class="user-edit">
-    <input
-      type="text"
-      id="userInput"
-      class="user-input"
-      value="${escapeHtml(user)}"
-      size="${Math.max(user.length, 4)}"
-      onchange="changeUser(this.value)"
-      aria-label="npm username"
+// the page header: avatar and name of the user on the left, the box to
+// pick another user and the page icons on the right.
+// npm has no avatar API, the GitHub one of the same user is used.
+const userHeaderHTML = (label, stats, current) => `<div class="plate">
+    <img
+      class="avatar"
+      src="https://github.com/${encodeURIComponent(ghUser)}.png?size=152"
+      alt=""
+      onerror="this.hidden = true"
     />
-    <button
-      type="button"
-      class="edit-icon"
-      onclick="focusUserInput()"
-      aria-label="Edit npm username"
-    >${icoPencil}</button>
-  </span>`;
+    <div class="plate-text">
+      <p class="eyebrow">${sitePickerHTML()} ${label}</p>
+      <h1 class="plate-name">
+        <a href="https://www.npmjs.com/~${encodeURIComponent(
+          user,
+        )}" target="_blank" rel="noopener">@${escapeHtml(user)}</a>
+        ${fansLinkHTML()}
+      </h1>
+      ${stats ? `<div class="plate-stats">${stats}</div>` : ""}
+    </div>
+  </div>
+  <div class="plate-side">
+    ${userFormHTML()}
+    ${headerLinksHTML(current)}
+  </div>`;
 
 const setPageMetaTitle = () => {
   document.title = chartsPage
@@ -369,6 +409,7 @@ const updateBookmarkableUrl = () => {
   const url = new URL(window.location);
   url.searchParams.set("user", user);
   history.replaceState(null, "", url);
+  rememberUser(user);
 };
 
 // --- caching ----------------------------------------------------------

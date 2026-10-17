@@ -212,19 +212,18 @@ const changeUser = async (newUser) => {
 const periodTotal = () =>
   packages.reduce((total, p) => total + periodDownloads(p, period), 0);
 
-const titleHTML = () => `<span id="title-main">
-  ${userEditHTML()}
-  ${sitePickerHTML()}
-  ${fansLinkHTML()}
-  <span class="totals">
+const titleHTML = () =>
+  userHeaderHTML(
+    "packages of",
+    `<span class="totals">
     <span title="packages">${icoBox} ${totals.packages}</span>
     <span title="downloads over the last ${period.label}">${icoDownload} ${fNum(
       periodTotal(),
     )}</span>
     ${totals.stars ? `<span title="stars on GitHub">${icoStar} ${totals.stars}</span>` : ""}
-  </span>
-  </span>
-  ${headerLinksHTML("npm")}`;
+  </span>`,
+    "npm",
+  );
 
 const setupPulsePage = async () => {
   const userParam = new URLSearchParams(window.location.search).get("user");

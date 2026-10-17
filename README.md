@@ -37,6 +37,6 @@ GitHub allows 60 anonymous API calls per hour. When that limit is reached the st
 
 npm-Pulse is open source at [GitHub](https://github.com/evoluteur/npm-pulse) with MIT license.
 
-For more ways to look at your projects check out my other projects [GitHub-Projects-Cards](https://github.com/evoluteur/github-projects-cards) ([demo](https://evoluteur.github.io/github-projects-cards/)) to display your repositories as cards, and [Meet-the-Fans](https://github.com/evoluteur/meet-the-fans) ([demo](https://evoluteur.github.io/meet-the-fans/)) to visualize the network graph of your repositories, followers, stargazers, and forks.
+For more ways to look at your projects check out my other projects [Repo-Atlas](https://github.com/evoluteur/repo-atlas) ([demo](https://evoluteur.github.io/repo-atlas/)) to map your repositories by topic, [GitHub-Projects-Cards](https://github.com/evoluteur/github-projects-cards) ([demo](https://evoluteur.github.io/github-projects-cards/)) to display your repositories as cards, and [Meet-the-Fans](https://github.com/evoluteur/meet-the-fans) ([demo](https://evoluteur.github.io/meet-the-fans/)) to visualize the network graph of your repositories, followers, stargazers, and forks.
 
 Copyright (c) 2026 [Olivier Giulieri](https://evoluteur.github.io/).

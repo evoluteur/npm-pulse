@@ -733,17 +733,18 @@ const setupTooltip = () => {
   });
 };
 
-const chartsTitleHTML = () => `<span id="title-main">
-    ${userEditHTML()} ${sitePickerHTML()} ${fansLinkHTML()}
-    <span class="totals">
+const chartsTitleHTML = () =>
+  userHeaderHTML(
+    "charts of",
+    `<span class="totals">
       <span title="packages">${icoBox} ${totals.packages}</span>
       <span title="downloads over the last ${duration.label}" id="totals-downloads">${icoDownload} ${fNum(
         chartsPeriodTotal(duration),
       )}</span>
       ${totals.stars ? `<span title="stars on GitHub">${icoStar} ${totals.stars}</span>` : ""}
-    </span>
-  </span>
-  ${headerLinksHTML("npm-charts")}`;
+    </span>`,
+    "npm-charts",
+  );
 
 // a message in place of the charts: an API error, or no data to draw
 const chartsMessage = (html) =>
